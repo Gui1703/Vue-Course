@@ -15,7 +15,7 @@ const router = new Router()
 
 const {
   JWT_SECRET = '',
-  PORT = 3000
+  PORT = 3001
 } = process.env
 const authMiddleware = jwt({ secret: JWT_SECRET })
 app.use(bodyParser())

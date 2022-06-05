@@ -4,9 +4,31 @@
 </template>
 
 <script>
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import ModalFactory from './components/ModalFactory/index.vue'
+import services from './services'
 
 export default {
-  components: { ModalFactory }
+  components: { ModalFactory },
+
+  setup () {
+    const route = useRoute()
+
+    watch(() => route.path, async () => {
+      if (route.meta.hasAuth) {
+        const token = localStorage.getItem('token')
+
+        if (!token) {
+          route.push({ name: 'Home' })
+
+          return
+        }
+
+        const { data } = await services.users.getMe()
+        console.log(data)
+      }
+    })
+  }
 }
 </script>

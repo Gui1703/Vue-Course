@@ -8,6 +8,7 @@ import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ModalFactory from './components/ModalFactory/index.vue'
 import services from './services'
+import { setGlobalLoading } from './store/global'
 
 export default {
   components: { ModalFactory },
@@ -26,7 +27,7 @@ export default {
         }
 
         const { data } = await services.users.getMe()
-        console.log(data)
+        setGlobalLoading(data)
       }
     })
   }

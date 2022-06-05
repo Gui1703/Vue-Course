@@ -1,4 +1,5 @@
 import router from '@/router'
+import { setGlobalLoading } from '@/store/global'
 import axios from 'axios'
 import AuthService from './auth'
 import usersService from './users'
@@ -14,6 +15,7 @@ const httpClient = axios.create({
 })
 
 httpClient.interceptors.request.use(config => {
+  setGlobalLoading(true)
   const token = localStorage.getItem('token')
 
   if (token) {
@@ -24,12 +26,17 @@ httpClient.interceptors.request.use(config => {
 })
 
 httpClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    setGlobalLoading(false)
+    return response
+  },
+
   (error) => {
     const canThrowAnError =
       error.request.error === 0 || error.request.status === 500
 
     if (canThrowAnError) {
+      setGlobalLoading(false)
       throw new Error(error.message)
     }
 
@@ -37,6 +44,7 @@ httpClient.interceptors.response.use(
       router.push({ name: 'Home' })
     }
 
+    setGlobalLoading(false)
     return error
   }
 )

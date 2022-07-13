@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center w-full h-28 bg-brand-main">
-    <header-logged />
+    <HeaderLogged />
   </div>
 
   <div class="flex flex-col items-center justify-center h-64 bg-brand-gray">
@@ -21,7 +21,7 @@
         Este aqui é a sua chave de api
       </p>
 
-      <content-loader
+      <ContentLoader
         v-if="store.Global.isLoading || state.isLoading"
         class="rounded"
         width="600px"
@@ -34,18 +34,18 @@
         <span v-if="state.hasError">Erro ao carregar a apikey</span>
         <span v-else id="apikey">{{ store.User.currentUser.apiKey }}</span>
         <div class="flex ml-20 mr-5" v-if="!state.hasError">
-          <icon
+          <Icon
             @click="handleCopy"
             name="copy"
-            :color="brandColors.graydark"
+            :color="brandColors.darkgray"
             size="24"
             class="cursor-pointer"
           />
-          <icon
+          <Icon
             id="generate-apikey"
             @click="handleGenerateApikey"
             name="loading"
-            :color="brandColors.graydark"
+            :color="brandColors.darkgray"
             size="24"
             class="cursor-pointer ml-3"
           />
@@ -72,7 +72,7 @@
   defer
   async
   onload="init('{{store.User.currentUser.apiKey}}')"
-  src="https://igorhalfeld-feedbacker-widget.netlify.app/init.js"
+  src="https://Gui1703-feedbacker-widget.netlify.app/init.js"
 &gt;&lt;/script&gt;
         </pre>
       </div>

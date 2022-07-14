@@ -1,15 +1,8 @@
-import useStore from '../hooks/useStore'
-import {
-  resetUserStore,
-  setApiKey,
-  cleanCurrentUser,
-  setCurrentUser
-} from './user'
+import useStore from '@/hooks/useStore'
+import { resetUserStore, setApiKey, cleanCurrentUser, setCurrentUser } from './user'
 
 describe('UserStore', () => {
-  afterEach(() => {
-    resetUserStore()
-  })
+  afterEach(() => { resetUserStore() })
 
   it('should set current user', () => {
     const store = useStore()

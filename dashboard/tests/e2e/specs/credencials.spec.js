@@ -15,11 +15,11 @@ describe('Credencials', () => {
     cy.visit(`${APP_URL}/credencials`)
     cy.wait(2000)
 
-    const oldApikey = cy.get('#apikey').invoke('text')
-    cy.get('#generate-apikey').click()
+    const oldApiKey = cy.get('#apiKey').invoke('text')
+    cy.get('generate-apikey').click()
     cy.wait(2000)
     const newApikey = cy.get('#apikey').invoke('text')
 
-    expect(oldApikey).to.not.equal(newApikey)
+    expect(oldApiKey).to.not.equal(newApikey)
   })
 })

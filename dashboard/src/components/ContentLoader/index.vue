@@ -9,42 +9,42 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed } from 'vue'
 
 export default {
   props: {
     maxWidth: {
       default: 100,
-      type: Number,
+      type: Number
     },
     minWidth: {
       default: 80,
-      type: Number,
+      type: Number
     },
     animationDuration: {
-      default: "1.6s",
-      type: String,
+      default: '1.6s',
+      type: String
     },
     height: {
-      default: "1rem",
-      type: String,
+      default: '1rem',
+      type: String
     },
     width: {
-      default: "1rem",
-      type: String,
-    },
+      default: '1rem',
+      type: String
+    }
   },
 
-  setup(props) {
+  setup (props) {
     const computedWidth = computed(() => {
-      const value = Math.random() * (props.width - props.minWidth);
+      const value = Math.random() * (props.width - props.minWidth)
 
-      return props.width ?? `${Math.floor(value + props.minWidth)}%`;
-    });
+      return props.width ?? `${Math.floor(value + props.minWidth)}%`
+    })
 
-    return { computedWidth };
-  },
-};
+    return { computedWidth }
+  }
+}
 </script>
 
 <style lang="postcss" scoped>

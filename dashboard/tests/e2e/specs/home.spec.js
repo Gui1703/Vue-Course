@@ -25,10 +25,11 @@ describe('Home', () => {
     cy.get('#modal-login')
   })
 
-  it('should login with an email and password', () => {
+  it('should with an email and password', () => {
     cy.visit(APP_URL)
 
     cy.get('#header-login-button').click()
+
     cy.get('#modal-login')
 
     cy.get('#email-field').type('igor@igor.me')
@@ -42,6 +43,7 @@ describe('Home', () => {
     cy.visit(APP_URL)
 
     cy.get('#header-login-button').click()
+
     cy.get('#modal-login')
 
     cy.get('#email-field').type('igor@')
@@ -51,10 +53,25 @@ describe('Home', () => {
     cy.get('#email-error')
   })
 
-  it('should logout work correctly', () => {
+  it('should show an error with an invalid password', () => {
     cy.visit(APP_URL)
 
     cy.get('#header-login-button').click()
+
+    cy.get('#modal-login')
+
+    cy.get('#email-field').type('igor@igor.me')
+    cy.get('#password-field').type('12')
+    cy.get('#submit-button').click()
+
+    cy.get('#password-error')
+  })
+
+  it('should logout wark correctly', () => {
+    cy.visit(APP_URL)
+
+    cy.get('#header-login-button').click()
+
     cy.get('#modal-login')
 
     cy.get('#email-field').type('igor@igor.me')

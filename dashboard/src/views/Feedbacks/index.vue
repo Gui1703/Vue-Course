@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center w-full h-28 bg-brand-main">
-    <HeaderLogged />
+    <header-logged />
   </div>
 
   <div class="flex flex-col items-center justify-center h-64 bg-brand-gray">
@@ -20,13 +20,13 @@
         </h1>
         <suspense>
           <template #default>
-            <Filters
+            <filters
               @select="changeFeedbacksType"
               class="mt-8 animate__animated animate__fadeIn animate__faster"
             />
           </template>
           <template #fallback>
-            <FiltersLoading class="mt-8" />
+            <filters-loading class="mt-8" />
           </template>
         </suspense>
 
@@ -43,8 +43,8 @@
           Ainda nenhum feedback recebido 🤓
         </p>
 
-        <FeedbackCardLoading v-if="state.isLoading || state.isLoadingFeedbacks" />
-        <FeedbackCard
+        <feedback-card-loading v-if="state.isLoading || state.isLoadingFeedbacks" />
+        <feedback-card
           v-else
           v-for="(feedback, index) in state.feedbacks"
           :key="feedback.id"
@@ -52,7 +52,7 @@
           :feedback="feedback"
           class="mb-8"
         />
-        <FeedbackCardLoading v-if="state.isLoadingMoreFeedbacks" />
+        <feedback-card-loading v-if="state.isLoadingMoreFeedbacks" />
       </div>
     </div>
   </div>

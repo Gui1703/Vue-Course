@@ -33,31 +33,31 @@
 </template>
 
 <script>
-import useStore from "@/hooks/useStore";
-import { cleanCurrentUser } from "@/store/user";
-import { computed } from "vue";
-import { useRouter } from "vue-router";
+import useStore from '@/hooks/useStore'
+import { cleanCurrentUser } from '@/store/user'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
-  setup() {
-    const router = useRouter();
-    const store = useStore("User");
+  setup () {
+    const router = useRouter()
+    const store = useStore('User')
 
     const logoutLabel = computed(() => {
       if (!store.currentUser.name) {
-        return "...";
+        return '...'
       }
 
-      return `${store.currentUser.name} (sair)`;
-    });
+      return `${store.currentUser.name} (sair)`
+    })
 
-    function handleLogout() {
-      localStorage.removeItem("token");
-      cleanCurrentUser();
-      router.push({ name: "Home" });
+    function handleLogout () {
+      localStorage.removeItem('token')
+      cleanCurrentUser()
+      router.push({ name: 'Home' })
     }
 
-    return { router, logoutLabel, handleLogout };
-  },
-};
+    return { router, logoutLabel, handleLogout }
+  }
+}
 </script>

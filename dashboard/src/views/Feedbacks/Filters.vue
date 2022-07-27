@@ -20,7 +20,7 @@
             class="inline-block w-2 h-2 mr-2 rounded-full"/> {{ filter.label }}
         </div>
         <span
-          :class="filter.active ? filter.color.text : 'text-brand-dark'"
+          :class="filter.active ? filter.color.text : 'text-brand-darkgray'"
           class="font-bold"
         >
           {{ filter.amount }}
